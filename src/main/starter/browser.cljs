@@ -20,8 +20,7 @@
   (js/console.log "init")
   (defonce router
     (createBrowserRouter (clj->js [{:path "/"
-                                    :element (app/app)}])))
+                                    :element ($ app)}])))
   (.render (rdom/createRoot (.getElementById js/document "app"))
-           (React/StrictMode
-             (RouterProvider {:router router}))))
+           ($ RouterProvider {:router router})))
   
