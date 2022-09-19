@@ -1,5 +1,20 @@
 {
+  "scripts": {
+    "dev": "npx tailwind -i ./src/css/tailwind.css -o ./public/css/main.css --watch & npx shadow-cljs watch app"
+  },
   "devDependencies": {
-    "shadow-cljs": "^2.19.5"
+<<<<<<< HEAD
+    "shadow-cljs": "^2.19.5",
+    "tailwindcss": "^3.1.8"
+  },
+  "dependencies": {
+    "antd": "^4.23.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-refresh": "^0.14.0",
+    "react-router-dom": "^6.4.0"
+=======
+    "shadow-cljs": "^2.19.0"
+>>>>>>> parent of 4bffccd (bump shadow-cljs)
   }
 }

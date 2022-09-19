@@ -5,7 +5,7 @@
   "src/test"]
 
  :dependencies
- []
+ [[lilactown/helix "0.1.8"]]
 
  :dev-http
  {8020 "public"}
