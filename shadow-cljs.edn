@@ -16,6 +16,9 @@
    :output-dir "public/js"
    :asset-path "/js"
 
+   :devtools {:reload-strategy :full
+              :preloads [starter.browser]}
+
    :modules
    {:main ; becomes public/js/main.js
     {:init-fn starter.browser/init}}}}}

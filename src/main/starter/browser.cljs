@@ -1,9 +1,11 @@
 (ns starter.browser
-  (:require ["react" :refer [React]]
-            ["react-dom/client" :as rdom]
+  (:require ["react-dom/client" :as rdom]
             ["react-router-dom" :refer [createBrowserRouter RouterProvider Route]]
             [helix.core :refer [$]]
-            [starter.app :refer [app]]))
+            [helix.experimental.refresh :as r]
+            [starter.root :refer [root]]))
+
+(r/inject-hook!)
 
 ;; this is called before any code is reloaded
 (defn ^:dev/before-load stop []
@@ -11,7 +13,12 @@
 
 ;; start is called by init and after code reloading finishes
 (defn ^:dev/after-load start []
-  (js/console.log "start"))
+  (js/console.log "start")
+  (r/refresh!))
+
+(def routes
+  [{:path "/"
+    :element ($ root)}])
 
 (defn init []
   ;; init is called ONCE when the page loads
@@ -19,8 +26,7 @@
   ;; so it is available even in :advanced release builds
   (js/console.log "init")
   (defonce router
-    (createBrowserRouter (clj->js [{:path "/"
-                                    :element ($ app)}])))
+    (createBrowserRouter (clj->js routes)))
   (.render (rdom/createRoot (.getElementById js/document "app"))
            ($ RouterProvider {:router router})))
   
